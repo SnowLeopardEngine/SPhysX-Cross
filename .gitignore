@@ -1,7 +1,16 @@
 # VS Code
 .vscode/
 
+# XMake
+.xmake/
+
 # Build
-build/
+build*/
 bin/
 lib/
+
+# Prebuilt files
+Prebuilt/
+
+# Temp prebuilt download files
+tmp/

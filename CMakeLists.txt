@@ -59,21 +59,21 @@ set(SPHYSX_CROSS_ROOT_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
 set(CMAKE_INSTALL_PREFIX "${SPHYSX_CROSS_ROOT_DIR}")
 set(BINARY_ROOT_DIR "${CMAKE_INSTALL_PREFIX}/")
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${SPHYSX_CROSS_ROOT_DIR}/bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${SPHYSX_CROSS_ROOT_DIR})
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "" FORCE)
 
 add_subdirectory(PhysX-CMake)
 
-add_library(PhysX_static STATIC empty.cpp)
+add_library(SPhysX_static STATIC empty.cpp)
 
-target_include_directories(PhysX_static
+target_include_directories(SPhysX_static
 	PUBLIC 
 	"PhysX-CMake/physx/physx/include/" 
 	"PhysX-CMake/physx/pxshared/include/" 
 	"PhysX-CMake/physx/physx/snippets/"
 )
 
-target_link_libraries(PhysX_static PRIVATE 
+target_link_libraries(SPhysX_static PRIVATE 
 	"PhysXExtensions"
 	"PhysX"
 	"PhysXPvdSDK"
@@ -90,3 +90,5 @@ target_link_libraries(PhysX_static PRIVATE
 	"SceneQuery"
 	"SimulationController"
 )
+
+set_target_properties(SPhysX_static PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/lib")
