@@ -45,6 +45,13 @@ function link_physx()
     add_links("PhysXVehicle_static")
 end
 
+before_build(function(target)
+    if is_plat("macosx") then
+        print("Installing PhysX SDK 5.1.2...")
+        os.run("$(projectdir)/download_prebuilt_sdk_macosx.sh")
+    end
+end)
+
 -- if build examples, then include examples
 if has_config("examples") then
     includes("Examples")
