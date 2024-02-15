@@ -7,6 +7,7 @@ if [ ! -f "$PACKMAN_CMD" ]; then
     PACKMAN_CMD="${PACKMAN_CMD}.sh"
 fi
 source "$PACKMAN_CMD" init
+source "$PACKMAN_CMD" update -y
 
 if [[ $# -eq 0 ]] ; then
     exec "$PHYSX_ROOT_DIR/buildtools/packman/python.sh" "$PHYSX_ROOT_DIR/buildtools/cmake_generate_projects.py"

@@ -1,8 +1,4 @@
-if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-set(CMAKE_CXX_STANDARD 17)	# workaround g++ issue with C++20 and PhysX
-else()
-set(CMAKE_CXX_STANDARD 20)
-endif()
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # PhysX-specific CMake project setup
@@ -57,8 +53,4 @@ if(TARGET_EMSCRIPTEN OR ( (TARGET_WINDOWS OR TARGET_UWP) AND CMAKE_C_COMPILER_AR
 	target_compile_definitions(LowLevel PRIVATE "PX_SIMD_DISABLED" "DISABLE_CUDA_PHYSX")
 	target_compile_definitions(PhysXCooking PRIVATE "PX_SIMD_DISABLED")
 	target_compile_definitions(PhysXCharacterKinematic PRIVATE "PX_SIMD_DISABLED")
-
-	# endianness checks
-	target_compile_definitions(libnyquist PUBLIC "ARCH_CPU_LITTLE_ENDIAN")
-	target_compile_definitions("physfs-static" PUBLIC "MY_CPU_LE")
 endif()

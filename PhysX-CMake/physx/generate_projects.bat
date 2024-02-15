@@ -10,6 +10,9 @@ SET PHYSX_ROOT_DIR=%PHYSX_ROOT_DIR:\=/%
 call "%PHYSX_ROOT_DIR%\buildtools\packman\packman" init
 set "PYTHONPATH=%PM_MODULE_DIR%;%PYTHONPATH%"
 
+:: Update packman
+call "%PHYSX_ROOT_DIR%\buildtools\packman\packman" update -y
+
 IF %1.==. GOTO ADDITIONAL_PARAMS_MISSING
 
 :: Run packman to ensure dependencies are present and run cmake generation script afterwards
