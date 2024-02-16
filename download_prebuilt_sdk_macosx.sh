@@ -5,8 +5,8 @@ tmpFolder="tmp"
 mkdir -p "$tmpFolder"
 
 # setup download url link and file name
-url="https://github.com/SnowLeopardEngine/SPhysX-Cross/releases/download/Prebuilt-macosx-arm64/Prebuilt_macosx_arm64.zip"
-zipFileName="Prebuilt_macosx_arm64.zip"
+url="https://github.com/SnowLeopardEngine/SPhysX-Cross/releases/download/Prebuilt-macosx-general/Prebuilt_macosx_general.zip"
+zipFileName="Prebuilt_macosx_general.zip"
 
 # prepare folder names
 downloadDirectory="$tmpFolder"
