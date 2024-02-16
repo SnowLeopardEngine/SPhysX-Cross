@@ -54,4 +54,7 @@ if(TARGET_EMSCRIPTEN OR ( (TARGET_WINDOWS OR TARGET_UWP) AND CMAKE_C_COMPILER_AR
     target_compile_definitions(LowLevel PRIVATE "PX_SIMD_DISABLED" "DISABLE_CUDA_PHYSX")
 	target_compile_definitions(PhysXCooking PRIVATE "PX_SIMD_DISABLED")
 	target_compile_definitions(PhysXCharacterKinematic PRIVATE "PX_SIMD_DISABLED")
+elseif(TARGET_LINUX)
+    # workaround for linux, disable CUDA for now
+    target_compile_definitions(PhysXPvdSDK PRIVATE "DISABLE_CUDA_PHYSX")
 endif()
