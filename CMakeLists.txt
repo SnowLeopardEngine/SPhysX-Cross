@@ -43,6 +43,8 @@ elseif(TARGET_EMSCRIPTEN)
 	add_definitions(-pthread)
 	add_definitions(-fexceptions)
 	set(EM_LINK "-fexceptions" "-s MAX_WEBGL_VERSION=2" "-s MIN_WEBGL_VERSION=2" "-s FULL_ES3=1" "-s USE_WEBGPU" "-s GL_ASSERTIONS=1" "-s OFFSCREEN_FRAMEBUFFER=1" "-s OFFSCREENCANVAS_SUPPORT=1" "-s GL_DEBUG=1" "-s LLD_REPORT_UNDEFINED" "-s NO_DISABLE_EXCEPTION_CATCHING" "-s NO_DISABLE_EXCEPTION_THROWING" "-s PTHREAD_POOL_SIZE=4" "-s ASSERTIONS=1" "-s ALLOW_MEMORY_GROWTH=1" "-s MAXIMUM_MEMORY=4GB")
+elseif(TARGET_LINUX)
+    add_definitions(-Wno-nonnull -Wno-stringop-overflow)
 endif()
 
 if(TARGET_ANDROID)
@@ -67,13 +69,13 @@ add_subdirectory(PhysX-CMake)
 add_library(SPhysX_static STATIC empty.cpp)
 
 target_include_directories(SPhysX_static
-	PUBLIC 
-	"PhysX-CMake/physx/physx/include/" 
-	"PhysX-CMake/physx/pxshared/include/" 
+	PUBLIC
+	"PhysX-CMake/physx/physx/include/"
+	"PhysX-CMake/physx/pxshared/include/"
 	"PhysX-CMake/physx/physx/snippets/"
 )
 
-target_link_libraries(SPhysX_static PRIVATE 
+target_link_libraries(SPhysX_static PRIVATE
 	"PhysXExtensions"
 	"PhysX"
 	"PhysXPvdSDK"
