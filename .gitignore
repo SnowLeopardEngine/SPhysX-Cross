@@ -11,6 +11,8 @@ lib/
 
 # Prebuilt files
 Prebuilt/
+*.dll
+*.so
 
 # Temp prebuilt download files
 tmp/
