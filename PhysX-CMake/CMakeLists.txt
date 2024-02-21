@@ -1,10 +1,12 @@
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-if(CMAKE_BUILD_TYPE AND CMAKE_BUILD_TYPE STREQUAL "Debug")
-    add_compile_definitions(_DEBUG)
-else()
-    add_compile_definitions(NDEBUG)
+if(NOT TARGET_APPLE)
+    if(CMAKE_BUILD_TYPE AND CMAKE_BUILD_TYPE STREQUAL "Debug")
+        add_compile_definitions(_DEBUG)
+    else()
+        add_compile_definitions(NDEBUG)
+    endif()
 endif()
 
 # PhysX-specific CMake project setup
